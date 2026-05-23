@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free JAMB Score Calculator 2026 Nigeria. Calculate your JAMB + Post-UTME total. Check if you can gain admission.">
+    <title>JAMB Score Calculator 2026 | Free & Fast</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
+        body { background: #f0f4f8; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .container { background: white; max-width: 500px; width: 100%; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        h1 { color: #1e40af; text-align: center; margin-bottom: 10px; font-size: 24px; }
+        .subtitle { text-align: center; color: #666; margin-bottom: 25px; font-size: 14px; }
+        label { display: block; margin-top: 15px; font-weight: bold; color: #333; }
+        input { width: 100%; padding: 12px; margin-top: 5px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; }
+        input:focus { border-color: #1e40af; outline: none; }
+        button { width: 100%; padding: 15px; margin-top: 25px; background: #1e40af; color: white; border: none; border-radius: 8px; font-size: 18px; font-weight: bold; cursor: pointer; }
+        button:hover { background: #1e3a8a; }
+        #result { margin-top: 25px; padding: 20px; background: #eff6ff; border-radius: 10px; display: none; text-align: center; }
+        #result h2 { color: #1e40af; margin-bottom: 10px; }
+        .disclaimer { margin-top: 20px; font-size: 12px; color: #999; text-align: center; }
+        .footer { margin-top: 30px; text-align: center; font-size: 13px; }
+        .footer a { color: #1e40af; font-weight: bold; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>JAMB Score Calculator 2026</h1>
+        <p class="subtitle">Calculate your total score for admission</p>
+
+        <label>JAMB Score 1st Subject /50</label>
+        <input type="number" id="sub1" max="50" placeholder="e.g. 45">
+
+        <label>JAMB Score 2nd Subject /50</label>
+        <input type="number" id="sub2" max="50" placeholder="e.g. 42">
+
+        <label>JAMB Score 3rd Subject /50</label>
+        <input type="number" id="sub3" max="50" placeholder="e.g. 38">
+
+        <label>JAMB Score 4th Subject /50</label>
+        <input type="number" id="sub4" max="50" placeholder="e.g. 40">
+
+        <label>Post-UTME Score /100</label>
+        <input type="number" id="postutme" max="100" placeholder="e.g. 75">
+
+        <button onclick="calculate()">Calculate My Total</button>
+
+        <div id="result">
+            <h2 id="totalScore"></h2>
+            <p id="chance"></p>
+        </div>
+
+        <p class="disclaimer">Disclaimer: This is for estimation only. Not affiliated with JAMB. Official results from JAMB only.</p>
+
+        <div class="footer">
+            Built by <a href="https://wa.me/234XXXXXXXXXX" target="_blank">Your Name - Web Developer</a>
+            <br>Need a website for your business? DM me on WhatsApp
+        </div>
+    </div>
+
+    <script>
+        function calculate() {
+            let s1 = parseInt(document.getElementById('sub1').value) || 0;
+            let s2 = parseInt(document.getElementById('sub2').value) || 0;
+            let s3 = parseInt(document.getElementById('sub3').value) || 0;
+            let s4 = parseInt(document.getElementById('sub4').value) || 0;
+            let post = parseInt(document.getElementById('postutme').value) || 0;
+
+            let jambTotal = s1 + s2 + s3 + s4; // Out of 200
+            let total = jambTotal + post; // Out of 300
+
+            let chance = "";
+            if (total >= 250) chance = "🔥 High chance! You fit get admission.";
+            else if (total >= 200) chance = "✅ Good chance. Check your school cutoff.";
+            else if (total >= 180) chance = "⚠️ Possible, but try improve.";
+            else chance = "❌ Low chance. Consider JAMB again.";
+
+            document.getElementById('totalScore').innerText = `Your Total: ${total}/300`;
+            document.getElementById('chance').innerText = chance;
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
